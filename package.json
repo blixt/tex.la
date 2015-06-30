@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "MathJax-node": "^0.3.0"
+    "MathJax-node": "^0.3.0",
+    "appengine": "git://github.com/GoogleCloudPlatform/appengine-nodejs.git",
+    "express": "^4.13.0"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
