@@ -65,6 +65,13 @@ app.get('/', function (req, res) {
 
 app.get('/*', function (req, res) {
   var math = decodeURIComponent(req.url.substr(1));
+
+  var etag = '"' + crypto.createHash('md5').update(math).digest('base64') + '"';
+  if (req.get('If-None-Match') == etag) {
+    res.status(304).end();
+    return;
+  }
+
   mathjax.typeset({math: math, svg: true}, function (result) {
     if (result.errors) {
       res.set('Content-Type', 'text/plain');
@@ -74,7 +81,7 @@ app.get('/*', function (req, res) {
     res.set({
       'Cache-Control': 'public, max-age=3600',
       'Content-Type': 'image/svg+xml',
-      'ETag': crypto.createHash('md5').update(math).digest('base64')
+      'ETag': etag
     });
     res.send(result.svg);
   });
