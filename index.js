@@ -50,6 +50,7 @@ app.get('/', function (req, res) {
              '<p><input value="' + example + '" size="50"> <button>Update</button></p>\n' +
              '<p><img height="50" src="/' + encodeURIComponent(example) + '"></p>\n' +
              '<p><code>&lt;img height="50" src=&quot;http://tex.la<span id="path">/' + encodeURIComponent(example) + '</span>&quot;&gt;</code></p>\n' +
+             '<p><a href="https://github.com/blixt/tex.la">Source code on GitHub</a></p>\n' +
              '<script>\n' +
              'document.querySelector(\'input\').onchange = function () {\n' +
              '  var path = \'/\' + encodeURIComponent(this.value);\n' +
