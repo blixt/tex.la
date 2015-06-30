@@ -1,0 +1,23 @@
+{
+  "name": "tex.la",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "MathJax-node": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/blixt/tex.la.git"
+  },
+  "author": "Blixt <me@blixt.nyc>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/blixt/tex.la/issues"
+  },
+  "homepage": "https://github.com/blixt/tex.la#readme"
+}
