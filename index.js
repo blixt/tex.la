@@ -1,4 +1,5 @@
 var appengine = require('appengine');
+var crypto = require('crypto');
 var express = require('express');
 var mathjax = require('MathJax-node/lib/mj-single');
 
@@ -70,7 +71,11 @@ app.get('/*', function (req, res) {
       res.status(400).send('Error 400: Request Failed.\n' + result.errors + '\n' + math);
       return;
     }
-    res.set('Content-Type', 'image/svg+xml');
+    res.set({
+      'Cache-Control': 'public, max-age=3600',
+      'Content-Type': 'image/svg+xml',
+      'ETag': crypto.createHash('md5').update(math).digest('base64')
+    });
     res.send(result.svg);
   });
 });
