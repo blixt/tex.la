@@ -43,12 +43,21 @@ app.get('/_ah/stop', function (req, res) {
 });
 
 app.get('/', function (req, res) {
-  var example = encodeURIComponent('x = \\sum\\limits_{i=1}^n i^2');
+  var example = 'x = \\sum\\limits_{i=1}^n i^2';
+
   res.set('Content-Type', 'text/html');
   var html = '<h1>TeX.La (LaTeX)</h1>\n' +
-             '<p>Usage:<br>\n' +
-             '<code>&lt;img height="50" src=&quot;http://tex.la/' + example + '&quot;&gt;</code></p>\n' +
-             '<p><img height="50" src="/' + example + '"></p>';
+             '<p><input value="' + example + '" size="50"> <button>Update</button></p>\n' +
+             '<p><img height="50" src="/' + encodeURIComponent(example) + '"></p>\n' +
+             '<p><code>&lt;img height="50" src=&quot;http://tex.la<span id="path">/' + encodeURIComponent(example) + '</span>&quot;&gt;</code></p>\n' +
+             '<script>\n' +
+             'document.querySelector(\'input\').onchange = function () {\n' +
+             '  var path = \'/\' + encodeURIComponent(this.value);\n' +
+             '  document.querySelector(\'#path\').textContent = path;\n' +
+             '  document.querySelector(\'img\').src = path;\n' +
+             '};\n' +
+             '</script>';
+
   res.send(html);
 });
 
