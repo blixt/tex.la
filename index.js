@@ -65,7 +65,7 @@ app.get('/*', function (req, res) {
     return;
   }
 
-  mathjax.typeset({math: math, svg: true}, function (result) {
+  mathjax.typeset({math: math, img: true, svg: true}, function (result) {
     if (result.errors) {
       res.set('Content-Type', 'text/plain');
       res.status(400).send('Error 400: Request Failed.\n' + result.errors + '\n' + math);
