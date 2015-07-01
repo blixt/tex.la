@@ -5,6 +5,8 @@ var mathjax = require('MathJax-node/lib/mj-single');
 
 var pkg = require('./package.json');
 
+var EX_TO_PX_RATIO = 7.3749;
+
 mathjax.config({
   MathJax: {
     SVG: {
@@ -42,8 +44,8 @@ app.get('/', function (req, res) {
   res.set('Content-Type', 'text/html');
   var html = '<h1>TeX.La (LaTeX)</h1>\n' +
              '<p><input value="' + example + '" size="50"> <button>Update</button></p>\n' +
-             '<p><img height="50" src="/' + encodeURIComponent(example) + '"></p>\n' +
-             '<p><code>&lt;img height="50" src=&quot;http://tex.la<span id="path">/' + encodeURIComponent(example) + '</span>&quot;&gt;</code></p>\n' +
+             '<p><img src="/' + encodeURIComponent(example) + '"></p>\n' +
+             '<p><code>&lt;img src=&quot;http://tex.la<span id="path">/' + encodeURIComponent(example) + '</span>&quot;&gt;</code></p>\n' +
              '<p><a href="https://github.com/blixt/tex.la">Source code on GitHub</a></p>\n' +
              '<script>\n' +
              'document.querySelector(\'input\').onchange = function () {\n' +
@@ -76,7 +78,15 @@ app.get('/*', function (req, res) {
       'Content-Type': 'image/svg+xml',
       'ETag': etag
     });
-    res.send(result.svg);
+    var svg = result.svg;
+    var match = svg.match(/ width="([^"]+)ex" height="([^"]+)ex"/);
+    if (match) {
+      var newAttributes = '';
+      //newAttributes += ' width="' + (parseFloat(match[1]) * EX_TO_PX_RATIO) + 'px"';
+      newAttributes += ' height="' + Math.ceil(parseFloat(match[2]) * EX_TO_PX_RATIO) + 'px"';
+      svg = svg.substr(0, match.index) + newAttributes + svg.substr(match.index + match[0].length);
+    }
+    res.send(svg);
   });
 });
 
