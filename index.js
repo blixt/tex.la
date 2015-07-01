@@ -3,6 +3,8 @@ var crypto = require('crypto');
 var express = require('express');
 var mathjax = require('MathJax-node/lib/mj-single');
 
+var pkg = require('./package.json');
+
 mathjax.config({
   MathJax: {
     SVG: {
@@ -57,7 +59,7 @@ app.get('/', function (req, res) {
 app.get('/*', function (req, res) {
   var math = decodeURIComponent(req.url.substr(1));
 
-  var etag = '"' + crypto.createHash('md5').update(math).digest('base64') + '"';
+  var etag = '"' + crypto.createHash('md5').update(pkg.version + math).digest('base64') + '"';
   if (req.get('If-None-Match') == etag) {
     res.status(304).end();
     return;
