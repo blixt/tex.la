@@ -48,11 +48,13 @@ app.get('/', function (req, res) {
              '<p><code>&lt;img src=&quot;http://tex.la<span id="path">/' + encodeURIComponent(example) + '</span>&quot;&gt;</code></p>\n' +
              '<p><a href="https://github.com/blixt/tex.la">Source code on GitHub</a></p>\n' +
              '<script>\n' +
-             'document.querySelector(\'input\').onchange = function () {\n' +
-             '  var path = \'/\' + encodeURIComponent(this.value);\n' +
+             'var input = document.querySelector(\'input\');\n' +
+             'input.onchange = function () {\n' +
+             '  var path = \'/\' + encodeURIComponent(input.value);\n' +
              '  document.querySelector(\'#path\').textContent = path;\n' +
              '  document.querySelector(\'img\').src = path;\n' +
              '};\n' +
+             'input.onchange();\n' +
              '</script>';
 
   res.send(html);
