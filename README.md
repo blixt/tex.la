@@ -6,16 +6,16 @@ LaTeX as SVGs on the fly.
 
 If you need to render some LaTeX on the fly, this service is the easiest way to do so.
 
-![](http://tex.la/A%20%3D%20%5Cbegin%7Bvmatrix%7Da%20%26%20b%20%26%20c%20%26%20d%5C%5Ce%20%26%20f%20%26%20g%20%26%20h%5C%5Ci%20%26%20j%20%26%20k%20%26%20l%5C%5Cm%20%26%20n%20%26%20o%20%26%20p%5Cend%7Bvmatrix%7D)
+![](http://tex.la/%5Cint%5C!%5Cleft(%20%5Csum%5En_%7Bk%3D0%7D%20a_k%20x%5Ek%5Cright)%5C%2Cdx%3D%20%5Csum%5En_%7Bk%3D0%7D%20%5Cfrac%7Ba_k%20x%5E%7Bk%2B1%7D%7D%7Bk%2B1%7D%20%20%2B%20C)
 
 HTML:
 
 ```html
-<img src="http://tex.la/A%20%3D%20%5Cbegin%7Bvmatrix%7Da%20%26%20b%20%26%20c%20%26%20d%5C%5Ce%20%26%20f%20%26%20g%20%26%20h%5C%5Ci%20%26%20j%20%26%20k%20%26%20l%5C%5Cm%20%26%20n%20%26%20o%20%26%20p%5Cend%7Bvmatrix%7D">
+<img src="http://tex.la/%5Cint%5C!%5Cleft(%20%5Csum%5En_%7Bk%3D0%7D%20a_k%20x%5Ek%5Cright)%5C%2Cdx%3D%20%5Csum%5En_%7Bk%3D0%7D%20%5Cfrac%7Ba_k%20x%5E%7Bk%2B1%7D%7D%7Bk%2B1%7D%20%20%2B%20C">
 ```
 
 Markdown:
 
 ```markdown
-![](http://tex.la/A%20%3D%20%5Cbegin%7Bvmatrix%7Da%20%26%20b%20%26%20c%20%26%20d%5C%5Ce%20%26%20f%20%26%20g%20%26%20h%5C%5Ci%20%26%20j%20%26%20k%20%26%20l%5C%5Cm%20%26%20n%20%26%20o%20%26%20p%5Cend%7Bvmatrix%7D)
+![](http://tex.la/%5Cint%5C!%5Cleft(%20%5Csum%5En_%7Bk%3D0%7D%20a_k%20x%5Ek%5Cright)%5C%2Cdx%3D%20%5Csum%5En_%7Bk%3D0%7D%20%5Cfrac%7Ba_k%20x%5E%7Bk%2B1%7D%7D%7Bk%2B1%7D%20%20%2B%20C)
 ```
