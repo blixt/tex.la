@@ -35,7 +35,7 @@ function handleRenderRequest(latex, req, res) {
   renderToSVG(latex, function (error, svg) {
     if (error) {
       res.set('Content-Type', 'text/plain');
-      res.status(400).send('There was an error:\n\n' + error + '\n\nInput:\n\n' + math);
+      res.status(400).send('There was an error:\n\n' + error + '\n\nInput:\n\n' + latex);
       return;
     }
     res.set({
