@@ -8,17 +8,8 @@ mathjax.config({
     SVG: {
       font: 'STIX-Web'
     },
-    displayAlign: 'left',
-    displayIndent:'3em',
-    tex2jax: {
-      preview: ['[math]'],
-      processEscapes: true,
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      skipTags: ['script','noscript','style','textarea','pre','code']
-    },
     TeX: {
-      noUndefined: {disabled: true},
+      noUndefined: {disabled: true}
     }
   }
 });
