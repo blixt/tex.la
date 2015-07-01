@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>TeX.La (LaTeX → SVG on the fly)</title>
+		<link href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+		<style>
+		body {
+			font-family: 'Roboto', sans-serif;
+		}
+		h1 {
+			font-size: 32px;
+		}
+		h1 span {
+			transition: margin-left 200ms, opacity 200ms;
+		}
+		h1:hover > span:first-child {
+			margin-left: 35px;
+		}
+		h1:hover > span:last-child {
+			margin-left: -99px;
+		}
+		h1:hover span span {
+			opacity: 0;
+		}
+		</style>
+	</head>
+	<body>
+		<h1><span>TeX</span><span><span>.</span>La</span></h1>
+		<p><input onchange="update()" value="x = \sum\limits_{i=1}^n i^2" size="50"> <button>Update</button></p>
+		<p><img src="/x"></p>
+		<p><code>&lt;img src=&quot;http://tex.la<span id="path">/x</span>&quot;&gt;</code></p>
+		<p><a href="https://github.com/blixt/tex.la">Source code on GitHub</a></p>
+		<script>
+		function update() {
+			var latex = document.querySelector('input').value;
+			if (!latex) return;
+			var path = '/' + encodeURIComponent(latex);
+			document.querySelector('#path').textContent = path;
+			document.querySelector('img').src = path;
+		}
+		update();
+		</script>
+	</body>
+</html>
